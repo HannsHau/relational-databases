@@ -1,0 +1,9 @@
+POST http://localhost:3001/api/blogs
+Content-Type: application/json
+
+{  
+  "author": "Mr Black",
+  "url": "www.submarine.com",
+  "title": "speed", 
+  "likes": 0
+}
