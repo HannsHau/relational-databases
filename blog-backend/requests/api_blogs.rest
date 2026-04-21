@@ -2,7 +2,7 @@
 GET http://localhost:3001/api/blogs
 
 ### Get blogs with react
-GET http://localhost:3001/api/blogs?search=react
+GET http://localhost:3001/api/blogs?search=rea
 
 ### Create a blog
 POST http://localhost:3001/api/blogs
@@ -10,9 +10,9 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJ1Z3NAZnVuLmRlIiwiaWQiOjIsImlhdCI6MTc3Njc3NzA0MX0.A5kwCP2j3tdnWZZUifQt9_kDbwCLoloUhpGrH3XWx1U 
 
 {  
-  "author": "Mr Precht",
+  "author": "Pumukel",
   "url": "www.bild.de",
-  "title": "React", 
+  "title": "React fine", 
   "likes": 4
 }
 

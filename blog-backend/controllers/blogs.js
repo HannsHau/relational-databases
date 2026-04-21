@@ -6,11 +6,14 @@ const { Op } = require('sequelize')
 const { Blog, User } = require('../models')
 
 router.get('/', async (req, res) => {
-  const where = {}
+  let where = {}
 
   if (req.query.search) {
-    where.title = {
-      [Op.iLike]: '%' + req.query.search + '%',
+    where = {
+      [Op.or]: [
+        { title: { [Op.iLike]: '%' + req.query.search + '%' } },
+        { author: { [Op.iLike]: '%' + req.query.search + '%' } },
+      ],
     }
   }
 
@@ -20,7 +23,7 @@ router.get('/', async (req, res) => {
       model: User,
       attributes: ['name'],
     },
-    where,
+    where
   })
   res.json(blogs)
 })
