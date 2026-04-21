@@ -36,20 +36,4 @@ router.delete('/:id', blogFinder, async (req, res) => {
   res.status(204).end()
 })
 
-const errorHandler = (error, req, res, next) => {
-  console.error('We got an Error in our middleware!', error.message, ':', error.name)
-
-  if (error.name === 'NotFound') {
-    return res.status(404).json({ error })
-  }
-
-  if (error.name === 'SequelizeValidationError') {
-    return res.status(400).json({error})
-  }
-
-  next(error)
-}
-
-router.use(errorHandler)
-
 module.exports = router

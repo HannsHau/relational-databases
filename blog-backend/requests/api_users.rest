@@ -3,8 +3,8 @@ POST http://localhost:3001/api/users
 Content-Type: application/json
 
 {  
-  "name": "Bugs One Bunny",
-  "username": "bugs1"
+  "name": "Bugs 4 Bunny",
+  "username": "bugs4"
 }
 
 ### get all users
@@ -15,6 +15,6 @@ PUT http://localhost:3001/api/users/bugs1
 Content-Type: application/json
 
 {  
-  "name": "Bugs Bad Bunny"
+  # "name": "Bugs Bad Bunny"
 }
 

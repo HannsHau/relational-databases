@@ -13,7 +13,7 @@ Content-Type: application/json
 }
 
 ### Modify the likes of a blog
-PUT http://localhost:3001/api/blogs/6
+PUT http://localhost:3001/api/blogs/66
 Content-Type: application/json
 
 {  
