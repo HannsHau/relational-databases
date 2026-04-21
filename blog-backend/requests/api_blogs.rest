@@ -7,9 +7,9 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJ1Z3MxIiwiaWQiOjIsImlhdCI6MTc3Njc3MzUzMn0.am2tDsF7UZAqg2xhCE24JzL0Bg2XJJA-Il-et4RJKxM
 
 {  
-  "author": "Mr Whitness",
+  "author": "Mr No_One",
   "url": "www.go.de",
-  "title": "fine", 
+  "title": "Wonderfull world", 
   "likes": 2
 }
 
