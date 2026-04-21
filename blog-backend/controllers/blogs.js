@@ -16,19 +16,23 @@ router.post('/', async (req, res) => {
   }
 })
 
-router.delete('/:id', async (req, res) => {
-  const blog = await Blog.findByPk(req.params.id)
-  if (blog) {
-    console.log(blog.toJSON())
-    const return_value = await Blog.destroy({
-      where: {
-        id: blog.id
-      }
-    })
-    res.json(return_value)
-  } else {
-    res.status(404).end()
+const blogFinder = async (req, res, next) => {
+  req.blog = await Blog.findByPk(req.params.id)
+  if (!req.blog) {
+    return res.status(404).end()
   }
+  next()
+}
+
+router.put('/:id', blogFinder, async (req, res) => {
+  req.blog.likes = req.body.likes
+  await req.blog.save()
+  res.json(req.blog)
+})
+
+router.delete('/:id', blogFinder, async (req, res) => {
+  await req.blog.destroy()
+  res.status(204).end()
 })
 
 module.exports = router

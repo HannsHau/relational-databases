@@ -2,8 +2,8 @@ POST http://localhost:3001/api/blogs
 Content-Type: application/json
 
 {  
-  "author": "Mr White",
-  "url": "www.warfighter.com",
-  "title": "speed", 
-  "likes": 2
+  "author": "Mr Green",
+  "url": "www.cannabis.de",
+  "title": "stoned", 
+  "likes": 4
 }
