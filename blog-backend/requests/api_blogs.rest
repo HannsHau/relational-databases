@@ -17,11 +17,11 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJ1Z
 }
 
 ### Modify the likes of a blog
-PUT http://localhost:3001/api/blogs/66
+PUT http://localhost:3001/api/blogs/4
 Content-Type: application/json
 
 {  
-  "likes": 3
+  "likes": 9
 }
 
 ### Delete a blog
