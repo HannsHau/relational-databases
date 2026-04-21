@@ -3,7 +3,7 @@ Content-Type: application/json
 
 {  
   "author": "Mr Green",
-  "url": "www.cannabis.de",
+  # "url": "www.cannabis.de",
   "title": "stoned", 
   "likes": 4
 }
