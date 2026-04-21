@@ -6,8 +6,8 @@ POST http://localhost:3001/api/users
 Content-Type: application/json
 
 {  
-  "name": "Bugs 4 Bunny",
-  "username": "bugs4"
+  "name": "bugs",
+  "username": "bugs@fun.de"
 }
 
 ### change username

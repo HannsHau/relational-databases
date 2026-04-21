@@ -1,16 +1,26 @@
 const router = require('express').Router()
 const jwt = require('jsonwebtoken')
 const { SECRET } = require('../util/config')
+const { Op } = require('sequelize')
 
 const { Blog, User } = require('../models')
 
 router.get('/', async (req, res) => {
+  const where = {}
+
+  if (req.query.search) {
+    where.title = {
+      [Op.iLike]: '%' + req.query.search + '%',
+    }
+  }
+
   const blogs = await Blog.findAll({
     attributes: { exclude: ['userId'] },
     include: {
       model: User,
-      attributes: ['name']
-    }
+      attributes: ['name'],
+    },
+    where,
   })
   res.json(blogs)
 })
@@ -20,10 +30,10 @@ const tokenExtractor = (req, res, next) => {
   if (authorization && authorization.toLowerCase().startsWith('bearer ')) {
     try {
       req.decodedToken = jwt.verify(authorization.substring(7), SECRET)
-    } catch{
+    } catch {
       return res.status(401).json({ error: 'token invalid' })
     }
-  }  else {
+  } else {
     return res.status(401).json({ error: 'token missing' })
   }
   next()
@@ -32,9 +42,9 @@ const tokenExtractor = (req, res, next) => {
 router.post('/', tokenExtractor, async (req, res, next) => {
   try {
     const user = await User.findByPk(req.decodedToken.id)
-    const blog = await Blog.create({...req.body, userId: user.id})
+    const blog = await Blog.create({ ...req.body, userId: user.id })
     return res.json(blog)
-  } catch(error) {
+  } catch (error) {
     next(error)
   }
 })
@@ -42,7 +52,7 @@ router.post('/', tokenExtractor, async (req, res, next) => {
 const blogFinder = async (req, res, next) => {
   req.blog = await Blog.findByPk(req.params.id)
   if (!req.blog) {
-    next({ name: 'NotFound', message: 'Blog not found'})
+    next({ name: 'NotFound', message: 'Blog not found' })
   }
   next()
 }
@@ -54,11 +64,13 @@ router.put('/:id', blogFinder, async (req, res) => {
 })
 
 router.delete('/:id', tokenExtractor, blogFinder, async (req, res, next) => {
-
   console.log('delete: ', req.blog.dataValues.userId, ':', req.decodedToken.id)
 
   if (req.blog.dataValues.userId != req.decodedToken.id) {
-    next({ name: 'DifferentUser', message: 'user is not owner, delete not possible'})
+    next({
+      name: 'DifferentUser',
+      message: 'user is not owner, delete not possible',
+    })
   } else {
     await req.blog.destroy()
     res.status(204).end()

@@ -9,7 +9,7 @@ POST http://localhost:3001/api/users
 Content-Type: application/json
 
 {  
-  "username": "bugs69",
-  "name": "Bugs Bad Bunny"
+  "username": "bugs67",
+  "name": "six seven"
 }
 

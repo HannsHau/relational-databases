@@ -1,8 +1,10 @@
+### Bugs67 Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJ1Z3M2NyIsImlkIjoyLCJpYXQiOjE3NzY3NzQ3NDN9.8m_05BE3-5-2ZuP9pnuIqWVCyeOt3uWVggxzpbOBik4
+### Bugs69 Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJ1Z3M2OSIsImlkIjoxLCJpYXQiOjE3NzY3NzQ5NDF9._Uq3kbqZaUnJDv16V-bwEFOHO80ogUjevIhwygKkvJE
 POST http://localhost:3001/api/notes
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJ1Z3M2OSIsImlkIjoyLCJpYXQiOjE3NzY3NjE3Nzh9.RSYz1vURC9DJdY-FEPdHXPcUQlitOpQ9Mlq2b4gFdfU
- 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJ1Z3M2OSIsImlkIjoxLCJpYXQiOjE3NzY3NzQ5NDF9._Uq3kbqZaUnJDv16V-bwEFOHO80ogUjevIhwygKkvJE 
+
 {  
-  "content": "love romantic",
-  "important": false
+  "content": "boom",
+  "important": true
 }
