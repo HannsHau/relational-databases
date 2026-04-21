@@ -1,0 +1,24 @@
+### Get all blogs
+GET http://localhost:3001/api/blogs
+
+### Create a blog
+POST http://localhost:3001/api/blogs
+Content-Type: application/json
+
+{  
+  "author": "Mr Rose",
+  "url": "www.rose-bikes.de",
+  "title": "fine", 
+  "likes": 2
+}
+
+### Modify the likes of a blog
+PUT http://localhost:3001/api/blogs/6
+Content-Type: application/json
+
+{  
+  "likes": 3
+}
+
+### Delete a blog
+DELETE http://localhost:3001/api/blogs/3
