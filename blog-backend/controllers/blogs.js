@@ -53,9 +53,16 @@ router.put('/:id', blogFinder, async (req, res) => {
   res.json(req.blog)
 })
 
-router.delete('/:id', blogFinder, async (req, res) => {
-  await req.blog.destroy()
-  res.status(204).end()
+router.delete('/:id', tokenExtractor, blogFinder, async (req, res, next) => {
+
+  console.log('delete: ', req.blog.dataValues.userId, ':', req.decodedToken.id)
+
+  if (req.blog.dataValues.userId != req.decodedToken.id) {
+    next({ name: 'DifferentUser', message: 'user is not owner, delete not possible'})
+  } else {
+    await req.blog.destroy()
+    res.status(204).end()
+  }
 })
 
 module.exports = router

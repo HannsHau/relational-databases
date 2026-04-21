@@ -4,10 +4,10 @@ GET http://localhost:3001/api/blogs
 ### Create a blog
 POST http://localhost:3001/api/blogs
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJ1Z3MyIiwiaWQiOjEsImlhdCI6MTc3Njc3MTA1N30.KkhL4iJfvKwGSQTovuqNZfpQ-fGYMLSXBaBo7WYa_u8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJ1Z3MxIiwiaWQiOjIsImlhdCI6MTc3Njc3MzUzMn0.am2tDsF7UZAqg2xhCE24JzL0Bg2XJJA-Il-et4RJKxM
 
 {  
-  "author": "Mr Grapefruit",
+  "author": "Mr Whitness",
   "url": "www.go.de",
   "title": "fine", 
   "likes": 2
@@ -22,4 +22,7 @@ Content-Type: application/json
 }
 
 ### Delete a blog
-DELETE http://localhost:3001/api/blogs/3
+### bugs2 Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJ1Z3MyIiwiaWQiOjEsImlhdCI6MTc3Njc3MzI4NH0.4x2Jczby48WFU48HZAQYlBnNG3JTFyX_vJxjA28k0YM
+### bugs1 Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJ1Z3MxIiwiaWQiOjIsImlhdCI6MTc3Njc3MzUzMn0.am2tDsF7UZAqg2xhCE24JzL0Bg2XJJA-Il-et4RJKxM 
+DELETE http://localhost:3001/api/blogs/11
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJ1Z3MxIiwiaWQiOjIsImlhdCI6MTc3Njc3MzUzMn0.am2tDsF7UZAqg2xhCE24JzL0Bg2XJJA-Il-et4RJKxM

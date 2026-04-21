@@ -6,6 +6,10 @@ const errorHandler = (error, req, res, next) => {
     return res.status(404).json({ error })
   }
 
+    if (error.name === 'DifferentUser') {
+    return res.status(400).json({ error })
+  }
+
   if (error.name === 'SequelizeValidationError' && error?.errors?.[0]?.path === 'username') {
     return res.status(400).json({error: "username must be a valid email address"})
   }
