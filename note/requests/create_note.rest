@@ -2,7 +2,7 @@ POST http://localhost:3001/api/notes
 Content-Type: application/json
 
 {  
-  "content": "van dam 3",
-  "important": false,
+  "content": "my personal note",
+  "important": true,
   "userId": "698b5f2b6249b477f03c0ab7"
 }

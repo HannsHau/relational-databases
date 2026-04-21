@@ -1,6 +1,6 @@
-PUT http://localhost:3001/api/notes/1
+PUT http://localhost:3001/api/notes/5
 Content-Type: application/json
 
 {  
-  "important": true
+  "important": false
 }
