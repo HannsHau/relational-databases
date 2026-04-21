@@ -4,10 +4,11 @@ GET http://localhost:3001/api/blogs
 ### Create a blog
 POST http://localhost:3001/api/blogs
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJ1Z3MyIiwiaWQiOjEsImlhdCI6MTc3Njc3MTA1N30.KkhL4iJfvKwGSQTovuqNZfpQ-fGYMLSXBaBo7WYa_u8
 
 {  
-  "author": "Mr Rose",
-  "url": "www.rose-bikes.de",
+  "author": "Mr Grapefruit",
+  "url": "www.go.de",
   "title": "fine", 
   "likes": 2
 }
