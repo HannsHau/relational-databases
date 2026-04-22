@@ -10,6 +10,7 @@ const loginRouter = require('./controllers/login')
 const authorRouter = require('./controllers/authors')
 const resetRouter = require('./controllers/reset')
 const healthRouter = require('./controllers/health')
+const readingListRouter = require('./controllers/readinglists')
 
 const errorHandler = require('./errorHandler')
 
@@ -20,6 +21,7 @@ app.use('/api/users', userRouter)
 app.use('/api/login', loginRouter)
 app.use('/api/authors', authorRouter)
 app.use('/api/reset', resetRouter)
+app.use('/api/readinglists', readingListRouter)
 app.use('/', healthRouter)
 
 app.use(errorHandler)

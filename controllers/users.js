@@ -5,12 +5,12 @@ const { User, Blog } = require('../models')
 
 router.post('/', async (req, res, next) => {
   try {
-    const { name, username, password } = req.body;
-  
+    const { name, username, password } = req.body
+
     const saltRounds = 10
     const passwordhash = await bcrypt.hash(password, saltRounds)
 
-    const newUser = {name, username, passwordhash}
+    const newUser = { name, username, passwordhash }
 
     const user = await User.create(newUser)
     res.json(user)
@@ -23,8 +23,8 @@ router.get('/', async (req, res) => {
   const users = await User.findAll({
     include: {
       model: Blog,
-      attributes: ['author', 'title']
-    }
+      attributes: ['author', 'title'],
+    },
   })
   res.json(users)
 })
@@ -46,6 +46,30 @@ router.put('/:username', userFinder, async (req, res) => {
   console.log('body: ', req.body)
   await req.user.save()
   res.json(req.user)
+})
+
+router.get('/:id', async (req, res) => {
+  console.log('GET')
+
+  try {
+    const user = await User.findByPk(req.params.id, {
+      attributes: { exclude: ['id', 'passwordhash', 'createdAt', 'updatedAt'] },
+      include: [
+        {
+          model: Blog,
+          as: 'readinglist_blogs',
+          attributes: { exclude: ['userId'] },
+          through: {
+            attributes: [],
+          },
+        },
+      ],
+    })
+    console.log('found: ', req.params.id, '-', user)
+    res.json(user)
+  } catch (error) {
+    res.status(404).end()
+  }
 })
 
 module.exports = router

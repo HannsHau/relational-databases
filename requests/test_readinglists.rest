@@ -1,0 +1,44 @@
+### add testuser test1
+POST http://localhost:3001/api/users
+Content-Type: application/json
+
+{  
+  "name": "Test User 1",
+  "username": "test1@example.com", 
+  "password": "password123"
+}
+
+### add testuser test2
+POST http://localhost:3001/api/users
+Content-Type: application/json
+
+{  
+  "name": "Test User 2",
+  "username": "test2@example.com", 
+  "password": "password123"
+}
+
+### Create a blog
+POST http://localhost:3001/api/blogs
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QxQGV4YW1wbGUuY29tIiwiaWQiOjEsImlhdCI6MTc3Njg2NDA2Nn0.lGt2JMPSSzRcKqSaO2OeOPbmUwEhgvcmNKd4Rtrk2Mw 
+
+{  
+  "author": "Pumukel 2",
+  "url": "www.2.de",
+  "title": "React 2", 
+  "likes": 2, 
+  "year": 2021
+}
+
+### add a entry to the readinglist
+POST http://localhost:3001/api/readinglists
+Content-Type: application/json
+
+{  
+  "blogId": "6",
+  "userId": "1"
+}
+
+### check user
+GET http://localhost:3001/api/users/1
