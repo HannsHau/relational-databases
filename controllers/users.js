@@ -8,9 +8,9 @@ router.post('/', async (req, res, next) => {
     const { name, username, password } = req.body;
   
     const saltRounds = 10
-    const passwordHash = await bcrypt.hash(password, saltRounds)
+    const passwordhash = await bcrypt.hash(password, saltRounds)
 
-    const newUser = {name, username, passwordHash}
+    const newUser = {name, username, passwordhash}
 
     const user = await User.create(newUser)
     res.json(user)

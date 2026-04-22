@@ -14,7 +14,7 @@ router.post('/', async (request, response) => {
     }
   })
 
-  const passwordCorrect = await bcrypt.compare(body.password, user.passwordHash)
+  const passwordCorrect = await bcrypt.compare(body.password, user.passwordhash)
 
   if (!(user && passwordCorrect)) {
     return response.status(401).json({

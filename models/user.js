@@ -23,7 +23,7 @@ User.init(
         isEmail: true,
       },
     },
-    passwordHash: {
+    passwordhash: {
       type: DataTypes.STRING,
     }
   },

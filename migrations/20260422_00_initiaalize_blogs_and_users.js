@@ -19,15 +19,15 @@ module.exports = {
         validate: {
           isEmail: true,
         },
-        passwordHash: {
-          type: DataTypes.STRING,
-        },
-        created_at: {
-          type: DataTypes.DATE
-        }, 
-        updated_at: {
-          type: DataTypes.DATE
-        }
+      },
+      passwordhash: {
+        type: DataTypes.STRING,
+      },
+      created_at: {
+        type: DataTypes.DATE,
+      },
+      updated_at: {
+        type: DataTypes.DATE,
       },
     })
     await queryInterface.createTable('blogs', {
@@ -49,7 +49,7 @@ module.exports = {
       },
       likes: {
         type: DataTypes.INTEGER,
-        defaultValue: 0
+        defaultValue: 0,
       },
       user_id: {
         type: DataTypes.INTEGER,
@@ -57,11 +57,11 @@ module.exports = {
         references: { model: 'users', key: 'id' },
       },
       created_at: {
-        type: DataTypes.DATE
-      }, 
+        type: DataTypes.DATE,
+      },
       updated_at: {
-        type: DataTypes.DATE
-      }
+        type: DataTypes.DATE,
+      },
     })
   },
   down: async ({ context: queryInterface }) => {

@@ -25,6 +25,17 @@ Blog.init(
     likes: {
       type: DataTypes.INTEGER,
       defaultValue: 0
+    },
+    year: {
+      type: DataTypes.INTEGER,
+      validate: {
+        min: 1991,
+        isValidYear(value) {
+          if (value > new Date().getFullYear()) {
+            throw new Error('Year cannot exceed current year');
+          }
+        },
+      },
     }
   },
   {

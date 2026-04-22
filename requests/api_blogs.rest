@@ -7,13 +7,14 @@ GET http://localhost:3001/api/blogs?search=rea
 ### Create a blog
 POST http://localhost:3001/api/blogs
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJ1Z3NAZnVuLmRlIiwiaWQiOjIsImlhdCI6MTc3Njc3NzA0MX0.A5kwCP2j3tdnWZZUifQt9_kDbwCLoloUhpGrH3XWx1U 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QxQGV4YW1wbGUuY29tIiwiaWQiOjEsImlhdCI6MTc3Njg2NDA2Nn0.lGt2JMPSSzRcKqSaO2OeOPbmUwEhgvcmNKd4Rtrk2Mw 
 
 {  
-  "author": "Pumukel",
-  "url": "www.bild.de",
+  "author": "Pumukel re ",
+  "url": "www.bild.de er",
   "title": "React fine", 
-  "likes": 4
+  "likes": 4, 
+  "year": 2027
 }
 
 ### Modify the likes of a blog
