@@ -23,6 +23,9 @@ User.init(
         isEmail: true,
       },
     },
+    passwordHash: {
+      type: DataTypes.STRING,
+    }
   },
   {
     sequelize,

@@ -8,6 +8,8 @@ const blogsRouter = require('./controllers/blogs')
 const userRouter = require('./controllers/users')
 const loginRouter = require('./controllers/login')
 const authorRouter = require('./controllers/authors')
+const resetRouter = require('./controllers/reset')
+const healthRouter = require('./controllers/health')
 
 const errorHandler = require('./errorHandler')
 
@@ -17,6 +19,8 @@ app.use('/api/blogs', blogsRouter)
 app.use('/api/users', userRouter)
 app.use('/api/login', loginRouter)
 app.use('/api/authors', authorRouter)
+app.use('/api/reset', resetRouter)
+app.use('/', healthRouter)
 
 app.use(errorHandler)
 

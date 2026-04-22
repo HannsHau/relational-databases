@@ -1,0 +1,5 @@
+### health check
+GET http://localhost:3001
+
+### reset blogs and users table
+POST http://localhost:3001/api/reset
