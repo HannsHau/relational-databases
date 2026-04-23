@@ -42,3 +42,12 @@ Content-Type: application/json
 
 ### check user
 GET http://localhost:3001/api/users/1
+
+### mark entry from user_blogs as read
+PUT http://localhost:3001/api/readinglists/8
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QyQGV4YW1wbGUuY29tIiwiaWQiOjIsImlhdCI6MTc3NjkyNjA2NH0.XCm66dfZu5sUTIuKMZtOWEkCpvNsXgXWzvibo9wsXHM
+
+{
+  "state": "read"
+}
