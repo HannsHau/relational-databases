@@ -4,21 +4,23 @@ const router = require('express').Router()
 
 const { SECRET } = require('../util/config')
 const User = require('../models/user')
+const Session = require('../models/session')
 
-router.post('/', async (request, response) => {
+router.post('/', async (request, response, next) => {
   const body = request.body
 
   const user = await User.findOne({
     where: {
-      username: body.username
-    }
+      username: body.username,
+      disabled: false,
+    },
   })
 
   const passwordCorrect = await bcrypt.compare(body.password, user.passwordhash)
 
   if (!(user && passwordCorrect)) {
     return response.status(401).json({
-      error: 'invalid username or password'
+      error: 'invalid username or password',
     })
   }
 
@@ -29,9 +31,18 @@ router.post('/', async (request, response) => {
 
   const token = jwt.sign(userForToken, SECRET)
 
-  response
-    .status(200)
-    .send({ token, username: user.username, name: user.name })
+  try {
+    const session = {
+      token: token,
+      userId: user.id,
+    }
+    const newSession = await Session.create(session)
+    console.log('newSession saved', newSession)
+  } catch (error) {
+    next(error)
+  }
+
+  response.status(200).send({ token, username: user.username, name: user.name })
 })
 
 module.exports = router

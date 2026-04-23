@@ -1,0 +1,67 @@
+### add testuser test1
+POST http://localhost:3001/api/users
+Content-Type: application/json
+
+{  
+  "name": "Test User 1",
+  "username": "test1@example.com", 
+  "password": "password123"
+}
+
+### add testuser test2
+POST http://localhost:3001/api/users
+Content-Type: application/json
+
+{  
+  "name": "Test User 5",
+  "username": "test5@example.com", 
+  "password": "password123"
+}
+
+### set manually via psql
+update users set disabled=true where id=2;
+select id, name, disabled from users;
+
+### Login Post (Check Session stored✅)
+POST http://localhost:3001/api/login
+Content-Type: application/json
+
+{  
+  "username": "test3@example.com",
+  "password": "password123"
+}
+
+
+### Create a blog
+POST http://localhost:3001/api/blogs
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QxQGV4YW1wbGUuY29tIiwiaWQiOjEsImlhdCI6MTc3Njg2NDA2Nn0.lGt2JMPSSzRcKqSaO2OeOPbmUwEhgvcmNKd4Rtrk2Mw 
+
+{  
+  "author": "Should not work",
+  "url": "www.error.com",
+  "title": "React bad", 
+  "likes": 4, 
+  "year": 2027
+}
+
+### Create a blog
+POST http://localhost:3001/api/blogs
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QzQGV4YW1wbGUuY29tIiwiaWQiOjYsImlhdCI6MTc3Njk0MDA3Mn0.uc4UZ1WNKoYT_CMO_a9YdYSdFfgpxgZ82HcvmqH9Wz4 
+
+{  
+  "author": "Should work 3",
+  "url": "www.worksnot.com",
+  "title": "React good no", 
+  "likes": 3, 
+  "year": 2025
+}
+
+### Logout
+DELETE http://localhost:3001/api/logout
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QxQGV4YW1wbGUuY29tIiwiaWQiOjEsImlhdCI6MTc3Njk0MDAyNn0.AXYtSKnp_ESMSehtA7mnW_xTMofBrJXgofzw0TQ1POo
+
+
+
