@@ -60,7 +60,7 @@ router.get('/:id', async (req, res) => {
           as: 'readinglist_blogs',
           attributes: { exclude: ['userId'] },
           through: {
-            attributes: [],
+            attributes: ['state', 'id'],
           },
         },
       ],
