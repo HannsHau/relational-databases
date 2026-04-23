@@ -51,6 +51,15 @@ router.put('/:username', userFinder, async (req, res) => {
 router.get('/:id', async (req, res) => {
   console.log('GET')
 
+  let where = {}
+
+  if (req.query.read) {
+    where = {
+      state: req.query.read,
+    }
+  } else {
+  }
+
   try {
     const user = await User.findByPk(req.params.id, {
       attributes: { exclude: ['id', 'passwordhash', 'createdAt', 'updatedAt'] },
@@ -61,11 +70,11 @@ router.get('/:id', async (req, res) => {
           attributes: { exclude: ['userId'] },
           through: {
             attributes: ['state', 'id'],
+            where,
           },
         },
       ],
     })
-    console.log('found: ', req.params.id, '-', user)
     res.json(user)
   } catch (error) {
     res.status(404).end()
