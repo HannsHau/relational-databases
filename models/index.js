@@ -9,7 +9,7 @@ Blog.belongsTo(User)
 User.hasOne(Session)
 Session.belongsTo(User)
 
-User.belongsToMany(Blog, { through: UserBlogs, as: 'readinglist_blogs' })
+User.belongsToMany(Blog, { through: UserBlogs, as: 'readings' })
 Blog.belongsToMany(User, { through: UserBlogs, as: 'users_readinglist' })
 
 module.exports = {

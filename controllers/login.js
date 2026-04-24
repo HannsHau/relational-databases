@@ -37,7 +37,6 @@ router.post('/', async (request, response, next) => {
       userId: user.id,
     }
     const newSession = await Session.create(session)
-    console.log('newSession saved', newSession)
   } catch (error) {
     next(error)
   }

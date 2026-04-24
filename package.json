@@ -3,7 +3,12 @@
     "start": "node ./index.js",
     "dev": "node --watch index.js",
     "migration:down": "node util/rollback.js",
-    "test": "node --test --test-concurrency=1 tests/api_ch3.test.js"
+    "test:3": "node --test --test-concurrency=1 tests/api_ch3.test.js",
+    "test:4": "node --test --test-concurrency=1 tests/api_ch4.test.js",
+    "test:4:reading": "node --test --test-name-pattern=\"Reading Lists API\" tests/api_ch4.test.js",
+    "test:4:session": "node --test --test-name-pattern=\"Session Management API\" tests/api_ch4.test.js",
+    "test:4:integration": "node --test --test-name-pattern=\"Integration: Reading Lists and Sessions\" tests/api_ch4.test.js",
+    "test": "node --test --test-concurrency=1 "
   },
   "dependencies": {
     "axios": "^1.15.2",

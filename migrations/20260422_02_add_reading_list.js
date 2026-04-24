@@ -6,7 +6,7 @@ module.exports = {
       id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
-        autoIncrement: true
+        autoIncrement: true,
       },
       user_id: {
         type: DataTypes.INTEGER,
@@ -18,10 +18,10 @@ module.exports = {
         allowNull: false,
         references: { model: 'blogs', key: 'id' },
       },
-      state: {
-        type: DataTypes.ENUM('unread', 'read'),
-        defaultValue: 'unread'
-      }
+      read: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+      },
     })
   },
   down: async ({ context: queryInterface }) => {

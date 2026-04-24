@@ -55,7 +55,7 @@ router.get('/:id', async (req, res) => {
 
   if (req.query.read) {
     where = {
-      state: req.query.read,
+      read: req.query.read,
     }
   } else {
   }
@@ -66,10 +66,11 @@ router.get('/:id', async (req, res) => {
       include: [
         {
           model: Blog,
-          as: 'readinglist_blogs',
+          as: 'readings',
           attributes: { exclude: ['userId'] },
           through: {
-            attributes: ['state', 'id'],
+            as: "reading_list",
+            attributes: ['read', 'id'],
             where,
           },
         },

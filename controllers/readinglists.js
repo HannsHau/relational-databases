@@ -5,41 +5,75 @@ const { sequelize } = require('../util/db')
 const { tokenExtractor } = require('../util/middleware')
 
 router.post('/', async (req, res, next) => {
-  console.log('got in readinglists')
-
   try {
-    const { blogId, userId } = req.body
-    console.log('with blodId: ', blogId, ' and userId: ', userId)
-    console.log('maybe check if entries exists')
+    const { blogId, userId, caseId } = req.body
+
+    console.log('post entered blogId: ', blogId, ' userId: ', userId, 'caseId: ', caseId )
+
+    if (blogId !== null && blogId !== undefined) {
+      const blog = await Blog.findByPk(blogId)
+      if (!blog) {
+        return next({ name: 'NotFound', message: 'blog not found' })
+      }
+    } else {
+      return next({ name: 'MissingParameter', message: 'blogId is missing' })
+    }
+
+    if (userId !== null && userId !== undefined) {
+      const user = await User.findByPk(userId)
+      if(!user) {
+        return next({ name: 'NotFound', message: 'user not found' })
+      }
+    } else {
+      return next({ name: 'MissingParameter', message: 'userId is missing' })
+    }
+
+    console.log('HHA blogId: ', blogId, ' userId: ', userId)
+
+    const entry = await UserBlogs.findOne({
+      where: {
+        userId,
+        blogId,
+      },
+    })
+
+    if (entry !== null) {
+      return next({ name: 'DuplicateEntry', message: 'Entry already exists' })
+    }
 
     const newEntry = { userId, blogId }
 
-    console.log('newEntry: ', newEntry)
-
     const readinglistEntry = await UserBlogs.create(newEntry)
 
-    res.status(201).json(readinglistEntry)
+    const parsedEntry = {
+      read: readinglistEntry.dataValues.read,
+      id: readinglistEntry.dataValues.id,
+      user_id: readinglistEntry.dataValues.userId,
+      blog_id: readinglistEntry.dataValues.blogId,
+    }
+
+    res.status(201).json(parsedEntry)
   } catch (error) {
-    next(error)
+    return next(error)
   }
 })
 
 const userBlogsFinder = async (req, res, next) => {
   req.userBlog = await UserBlogs.findByPk(req.params.id)
   if (!req.userBlog) {
-    next({ name: 'NotFound', message: 'UserBlog (readinglist) not found' })
+    return next({ name: 'NotFound', message: 'UserBlog (readinglist) not found' })
   }
   next()
 }
 
 router.put('/:id', userBlogsFinder, tokenExtractor, async (req, res, next) => {
   if (req.userBlog.dataValues.userId != req.decodedToken.id) {
-    next({
+    return next({
       name: 'DifferentUser',
       message: 'user is not owner, modification not possible',
     })
   } else {
-    req.userBlog.state = req.body.state
+    req.userBlog.read = req.body.read
     await req.userBlog.save()
     res.json(req.userBlog)
   }
